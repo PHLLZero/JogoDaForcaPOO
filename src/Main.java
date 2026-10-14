@@ -1,15 +1,6 @@
 import dao.CentralDeInformacoes;
 import dao.Persistencia;
-import enums.Sexo;
-import model.Jogador;
-import model.Palavra;
-import panes.CadastroADM;
-import utils.ExtratorPalavrasCSV;
-import utils.GeradorDeRelatorios;
-import utils.Mensageiro;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+import panes.TelaCadastroADM;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +8,7 @@ public class Main {
         Persistencia persistencia = new Persistencia();
         String nomeArquivo = "central.xml";
         CentralDeInformacoes central = persistencia.recuperarCentral(nomeArquivo);
-        CadastroADM cadastro = new CadastroADM(central);
+        TelaCadastroADM cadastro = new TelaCadastroADM(central);
 
         cadastro.setVisible(true);
 
