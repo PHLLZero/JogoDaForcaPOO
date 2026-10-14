@@ -1,5 +1,6 @@
 package dao;
 
+import model.ADM;
 import model.Jogador;
 import model.Palavra;
 
@@ -9,6 +10,19 @@ public class CentralDeInformacoes {
 
     private ArrayList<Jogador> todosOsJogadores = new ArrayList<Jogador>();
     private ArrayList<Palavra> todasAsPalavras = new ArrayList<Palavra>();
+    private ADM adm;
+
+    public void setADM(ADM adm) {
+        if(this.adm == null){
+            this.adm = adm;
+        }
+    }
+
+
+    public ADM getADM() {
+        return adm;
+    }
+
 
     public boolean adicionarJogador(Jogador jogador){
         if(recuperarJogadorPorCPF(jogador.getCPF()) != null || recuperarJogadorPeloEmail(jogador.getEmail()) != null){
