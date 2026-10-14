@@ -1,6 +1,6 @@
 import dao.CentralDeInformacoes;
 import dao.Persistencia;
-import panes.TelaCadastroADM;
+import panes.CadastroADM;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class Main {
         Persistencia persistencia = new Persistencia();
         String nomeArquivo = "central.xml";
         CentralDeInformacoes central = persistencia.recuperarCentral(nomeArquivo);
-        TelaCadastroADM cadastro = new TelaCadastroADM(central);
+        CadastroADM cadastro = new CadastroADM(central);
 
         cadastro.setVisible(true);
 
