@@ -10,5 +10,8 @@
     <orderEntry type="library" name="thoughtworks.xstream" level="project" />
     <orderEntry type="library" name="itextpdf-5.5.9" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="xstream-1.4.19" level="project" />
+    <orderEntry type="library" name="xstream-hibernate-1.4.19" level="project" />
+    <orderEntry type="library" name="javax.mail-1.6.2" level="project" />
   </component>
 </module>

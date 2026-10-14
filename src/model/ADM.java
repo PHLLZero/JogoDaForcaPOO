@@ -1,10 +1,11 @@
 package model;
 
-public class ADM {
+import enums.Sexo;
 
-    private String id;
+public class ADM extends Usuario{
 
-
-
+    public ADM(String nome, String CPF, String email, String senha) {
+        super(nome, CPF, email, senha);
+    }
 
 }

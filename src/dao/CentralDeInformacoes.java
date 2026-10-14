@@ -1,6 +1,7 @@
 package dao;
 
 import model.Jogador;
+import model.Palavra;
 
 import java.util.ArrayList;
 

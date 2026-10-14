@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="xstream-hibernate-1.4.19">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/xstream-hibernate-1.4.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xstream-benchmark-1.4.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xstream-jmh-1.4.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/itextpdf-5.5.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/xstream-jmh-1.4.19.jar!/" />
+    </SOURCES>
+  </library>
+</component>

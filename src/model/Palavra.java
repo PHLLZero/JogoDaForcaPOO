@@ -1,5 +1,7 @@
 package model;
 
+import enums.Dificuldade;
+
 import java.time.LocalDate;
 
 public class Palavra {

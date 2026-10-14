@@ -1,30 +1,17 @@
 package model;
 
-public class Jogador {
+import enums.Sexo;
 
-    private String nome;
+public class Jogador extends Usuario {
+
     private Sexo sexo;
-    private String CPF;
-    private String email;
 
-    public Jogador(String nome, Sexo sexo, String CPF, String email) {
-        this.nome = nome;
+    private Integer pontuacao;
+
+    public Jogador(String nome, Sexo sexo, String CPF, String email, String senha, Integer pontuacao) {
+        super(nome, CPF, email, senha);
         this.sexo = sexo;
-        this.CPF = CPF;
-        this.email = email;
-    }
-
-    @Override
-    public String toString(){
-        return "Nome: " + nome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        this.pontuacao = 0;
     }
 
     public Sexo getSexo() {
@@ -35,12 +22,14 @@ public class Jogador {
         this.sexo = sexo;
     }
 
-    public String getCPF() {
-        return CPF;
+    public Integer getPontuacao() {
+        return pontuacao;
     }
 
-    public String getEmail() {
-        return email;
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
     }
+
+
 
 }
