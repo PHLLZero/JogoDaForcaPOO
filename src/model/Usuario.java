@@ -1,7 +1,5 @@
 package model;
 
-import enums.Sexo;
-
 public abstract class Usuario {
 
     private String nome;

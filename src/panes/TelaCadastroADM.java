@@ -1,4 +1,5 @@
 package panes;
+
 import dao.CentralDeInformacoes;
 import dao.Persistencia;
 import model.ADM;
@@ -8,10 +9,16 @@ import java.awt.*;
 
 public class TelaCadastroADM extends JFrame {
 
-    private CentralDeInformacoes central;
+    private final CentralDeInformacoes central;
+    private final Runnable aoConcluir;
 
     public TelaCadastroADM(CentralDeInformacoes central) {
+        this(central, null);
+    }
+
+    public TelaCadastroADM(CentralDeInformacoes central, Runnable aoConcluir) {
         this.central = central;
+        this.aoConcluir = aoConcluir;
 
         setTitle("Cadastro do Administrador");
         setSize(900, 700);
@@ -29,7 +36,6 @@ public class TelaCadastroADM extends JFrame {
 
         JPanel cartaoCadastro = new JPanel(new GridBagLayout());
         cartaoCadastro.setPreferredSize(new Dimension(400, 580));
-
         containerPrincipal.add(cartaoCadastro);
 
         JLabel lblTitulo = new JLabel("CRIAR CONTA");
@@ -42,7 +48,6 @@ public class TelaCadastroADM extends JFrame {
         lblSubtitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblSubtitulo.setForeground(new Color(160, 160, 160));
         cartaoCadastro.add(lblSubtitulo, gbc);
-
 
         JLabel labelNome = new JLabel("Primeiro Nome");
         labelNome.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -88,30 +93,31 @@ public class TelaCadastroADM extends JFrame {
             String cpf = textoCPF.getText();
             String senhaCapturada = new String(senha.getPassword());
 
-
             ADM admin = new ADM(nome, cpf, email, senhaCapturada);
-
-            central.setADM(admin);
+            if (!this.central.setADM(admin)) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Já existe um administrador cadastrado.",
+                        "Cadastro não realizado",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
             Persistencia persistencia = new Persistencia();
+            if (!persistencia.salvarCentral(this.central, Persistencia.ARQUIVO_CENTRAL)) {
+                this.central.removerADM(admin);
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Não foi possível salvar o cadastro do administrador.",
+                        "Erro ao salvar",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            persistencia.salvarCentral(central, "nomeArquivo.xml");
-
-            this.dispose();     // Fecha a tela
-
-            // tela de login -
-
-
+            dispose();
+            if (aoConcluir != null) {
+                aoConcluir.run();
+            }
         });
-
-
-
     }
-
-
-
-
-
-
-
 }

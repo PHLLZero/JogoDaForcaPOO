@@ -1,0 +1,19 @@
+<central>
+  <todosOsJogadores>
+    <jogador>
+      <nome>jogador</nome>
+      <email>111</email>
+      <CPF>jogador</CPF>
+      <senha>111</senha>
+      <sexo>MASCULINO</sexo>
+      <pontuacao>0</pontuacao>
+    </jogador>
+  </todosOsJogadores>
+  <todasAsPalavras/>
+  <adm>
+    <nome>adm</nome>
+    <email>adm</email>
+    <CPF>adm</CPF>
+    <senha>adm</senha>
+  </adm>
+</central>

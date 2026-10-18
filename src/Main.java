@@ -1,16 +1,30 @@
 import dao.CentralDeInformacoes;
 import dao.Persistencia;
-import panes.CadastroADM;
+import panes.TelaLogin;
+import panes.TelaInicio;
+
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
 
-        Persistencia persistencia = new Persistencia();
-        String nomeArquivo = "central.xml";
-        CentralDeInformacoes central = persistencia.recuperarCentral(nomeArquivo);
-        CadastroADM cadastro = new CadastroADM(central);
-
-        cadastro.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            try {
+                Persistencia persistencia = new Persistencia();
+                CentralDeInformacoes central =
+                        persistencia.recuperarCentral(Persistencia.ARQUIVO_CENTRAL);
+                TelaInicio telaInicio = new TelaInicio(
+                        () -> new TelaLogin(central).setVisible(true));
+                telaInicio.setVisible(true);
+            } catch (IllegalStateException e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        e.getMessage() + "\n" + e.getCause().getMessage(),
+                        "Erro ao carregar dados",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
 
 //        Scanner sc = new Scanner(System.in);
 //
@@ -174,4 +188,3 @@ public class Main {
 
 
 }
-

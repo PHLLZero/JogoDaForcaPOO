@@ -12,10 +12,20 @@ public class CentralDeInformacoes {
     private ArrayList<Palavra> todasAsPalavras = new ArrayList<Palavra>();
     private ADM adm;
 
-    public void setADM(ADM adm) {
-        if(this.adm == null){
-            this.adm = adm;
+    public boolean setADM(ADM adm) {
+        if (this.adm != null || adm == null) {
+            return false;
         }
+        this.adm = adm;
+        return true;
+    }
+
+    public boolean removerADM(ADM adm) {
+        if (this.adm != adm) {
+            return false;
+        }
+        this.adm = null;
+        return true;
     }
 
 
@@ -33,6 +43,10 @@ public class CentralDeInformacoes {
         todosOsJogadores.add(jogador);
         System.out.println("model.Jogador adicionado com sucesso!");
         return true;
+    }
+
+    public boolean removerJogador(Jogador jogador) {
+        return todosOsJogadores.remove(jogador);
     }
 
     public Jogador recuperarJogadorPorCPF(String CPF){
