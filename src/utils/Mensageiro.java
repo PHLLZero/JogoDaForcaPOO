@@ -25,10 +25,10 @@ public class Mensageiro {
         });
     }
 
-    public static void enviarMensagem(String emailDestinatario, String assunto, String mensagemTexto) {
+    public static boolean enviarMensagem(String emailDestinatario, String assunto, String mensagemTexto) {
         if (emailDestinatario == null || emailDestinatario.trim().isEmpty()) {
             System.out.println("E-mail do destinatário está vazio ou inválido.");
-            return;
+            return false;
         }
         emailDestinatario = emailDestinatario.trim();
 
@@ -44,9 +44,11 @@ public class Mensageiro {
             System.out.println("Enviando e-mail para " + emailDestinatario + "...");
             Transport.send(message);
             System.out.println("E-mail enviado com sucesso para: " + emailDestinatario);
+            return true;
 
-        } catch (Exception erroDeEnvio) {
+        } catch (MessagingException erroDeEnvio) {
             System.out.println("Erro ao tentar enviar o e-mail: " + erroDeEnvio.getMessage());
+            return false;
         }
     }
 }

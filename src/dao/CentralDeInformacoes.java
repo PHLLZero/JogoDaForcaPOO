@@ -3,6 +3,7 @@ package dao;
 import model.ADM;
 import model.Jogador;
 import model.Palavra;
+import model.Usuario;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,22 @@ public class CentralDeInformacoes {
         for(Jogador j: todosOsJogadores){
             if(j.getEmail().equals(email)){
                 return j;
+            }
+        }
+        return null;
+    }
+
+    public Usuario recuperarUsuarioPeloEmail(String email) {
+        if (email == null) {
+            return null;
+        }
+        String emailInformado = email.trim();
+        if (adm != null && adm.getEmail() != null && adm.getEmail().equalsIgnoreCase(emailInformado)) {
+            return adm;
+        }
+        for (Jogador jogador : todosOsJogadores) {
+            if (jogador.getEmail() != null && jogador.getEmail().equalsIgnoreCase(emailInformado)) {
+                return jogador;
             }
         }
         return null;
